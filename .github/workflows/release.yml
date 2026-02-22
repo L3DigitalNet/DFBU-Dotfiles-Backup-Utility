@@ -33,6 +33,7 @@ jobs:
             libegl1 \
             libgl1 \
             libfuse2 \
+            zsync \
             xvfb \
             libxkbcommon-x11-0 \
             libxcb-icccm4 \
@@ -54,6 +55,13 @@ jobs:
         run: |
           chmod +x packaging/build-appimage.sh
           packaging/build-appimage.sh
+
+      - name: Generate zsync file
+        run: |
+          ARCH="$(uname -m)"
+          APPIMAGE="dist/DFBU-${ARCH}.AppImage"
+          DOWNLOAD_URL="https://github.com/L3DigitalNet/DFBU-DotFiles-Backup-Utility/releases/latest/download/DFBU-${ARCH}.AppImage"
+          zsyncmake -u "$DOWNLOAD_URL" -o "${APPIMAGE}.zsync" "$APPIMAGE"
 
       - name: Get version from tag
         id: version
