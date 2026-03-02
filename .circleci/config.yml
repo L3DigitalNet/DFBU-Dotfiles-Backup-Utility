@@ -1,0 +1,60 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.1.1
+
+jobs:
+  quality:
+    docker:
+      - image: cimg/python:3.14
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Install uv
+          command: pip install uv --quiet
+      - restore_cache:
+          keys:
+            - uv-deps-v1-{{ checksum "uv.lock" }}
+            - uv-deps-v1-
+      - run:
+          name: Install dependencies
+          command: uv sync --all-groups
+      - save_cache:
+          key: uv-deps-v1-{{ checksum "uv.lock" }}
+          paths:
+            - .venv
+      - run:
+          name: Lint
+          command: uv run ruff check DFBU/
+      - run:
+          name: Format check
+          command: uv run ruff format --check DFBU/
+      - run:
+          name: Type check
+          command: uv run mypy DFBU/
+      - run:
+          name: Tests (non-GUI)
+          command: |
+            mkdir -p test-results
+            uv run pytest -m "not gui" \
+              --cov=DFBU \
+              --cov-report=xml \
+              --junitxml=test-results/junit.xml
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: coverage.xml
+          destination: coverage
+
+workflows:
+  ci:
+    jobs:
+      - quality:
+          filters:
+            branches:
+              only:
+                - main
+                - testing
+                - /ci\/.*/
+                - /feature\/.*/
