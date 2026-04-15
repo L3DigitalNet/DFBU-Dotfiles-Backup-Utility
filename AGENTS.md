@@ -437,3 +437,9 @@ use ContextStream's plan/task system
 Full docs: https://contextstream.io/docs/mcp/tools
 
 <!-- END ContextStream -->
+## Review Orchestrator Note
+
+- Full `review-orchestrator` sweeps now run selected child reviews with bounded parallelism by default, currently up to `8` in parallel after planning, preflight, and shared research complete.
+- The shared-research phase can legitimately take around `10` minutes on larger or research-heavy repos before child reviews start, so treat that as normal unless heartbeats stop or no artifact activity appears beyond that window.
+- Expect a top-level sweep index under `docs/review-orchestrator/` plus one `*-execution.json` manifest inside each selected review folder while the sweep is running.
+- Do not describe sweep child reviews as running “one at a time” unless the sweep was explicitly configured down to serial execution.
