@@ -76,13 +76,11 @@ dmypy.json
 # ---------------------------------------------------------------------------
 .agents/
 .aider*
-.claude/
 .claude.local.md
 .ai/
 .contextstream/
 .cursorignore
 .cursorindexingignore
-CLAUDE.md
 GEMINI.md
 .mypy-strict-config.md
 
