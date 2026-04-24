@@ -1,59 +1,23 @@
 # Conventions
 
-Short, scannable pattern library for future LLM sessions. Check this file before introducing a new persistent repo pattern. Add new conventions in the same schema below.
+Short, scannable pattern library for future LLM sessions. Rule bodies moved to `.claude/rules/*.md` during handoff-system-v2 Phase 5; this file retains the numbered skeleton as a stable cross-reference surface.
 
 ## Quick Reference
 
-| ID | Title | Applies when |
-| --- | --- | --- |
-| DOC-001 | LLM-first docs | editing files under `docs/` |
-| DOC-002 | Session start | starting work in this repo |
-| DOC-003 | Convention changes | adding or revising a repo convention |
+| ID | Title | Applies when | Rule body |
+| --- | --- | --- | --- |
+| DOC-001 | LLM-first docs | editing files under `docs/` | `.claude/rules/global.md` |
+| DOC-002 | Session start | starting work in this repo | `.claude/rules/global.md` |
+| DOC-003 | Convention changes | adding or revising a repo convention | `.claude/rules/global.md` |
 
 ## DOC-001. LLM-first docs
 
-**Applies when:** editing files under `docs/`.
-**Rule:** Keep `docs/` concise, scannable, and optimized for LLM retrieval.
-
-```md
-Use short sections, flat bullets, and tables instead of narrative prose.
-```
-
-**Why:** Repo docs are for session continuity and quick lookup, not human-oriented long-form reading.
-
-**Sources:**
-- `AGENTS.md`
-
-**Related:** DOC-002, DOC-003
+Moved to `.claude/rules/global.md` on 2026-04-24. See that file for the full rule.
 
 ## DOC-002. Session start
 
-**Applies when:** starting any session in this repo.
-**Rule:** Read `docs/handoff.md` before making changes.
-
-```md
-Open `docs/handoff.md`, confirm current state, then proceed.
-```
-
-**Why:** The handoff doc is the continuity layer between sessions.
-
-**Sources:**
-- `AGENTS.md`
-
-**Related:** DOC-001
+Moved to `.claude/rules/global.md` on 2026-04-24 (rule content updated to reflect the new hook-injected state flow — no more manual "read handoff.md first"). See `.claude/rules/global.md` for the current rule.
 
 ## DOC-003. Convention changes
 
-**Applies when:** adding or revising a persistent repo convention.
-**Rule:** Record the convention here using the same six-field schema and add it to the quick-reference table.
-
-```md
-Update the Quick Reference table and add a new numbered convention section below it.
-```
-
-**Why:** A stable schema makes convention lookup deterministic for future sessions.
-
-**Sources:**
-- `AGENTS.md`
-
-**Related:** DOC-001, DOC-002
+Moved to `.claude/rules/global.md` on 2026-04-24. See that file for the full rule.
