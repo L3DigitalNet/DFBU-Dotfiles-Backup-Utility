@@ -282,8 +282,10 @@ disallow_any_decorated = false       # Decorated test functions become Any-typed
 # - Proper return type hints where applicable
 # Tests should still follow type safety principles
 
-[tool.pyright]
-# Pyright/Pylance configuration (mirrors mypy strict settings above)
+[tool.basedpyright]
+# basedpyright editor-LSP config (mirrors the mypy strict settings above; mypy is
+# the CI checker). basedpyright also reads [tool.pyright] for backwards-compat —
+# this canonical name makes the intent explicit. Renamed from [tool.pyright] 2026-06-07.
 pythonVersion = "3.14"
 pythonPlatform = "Linux"
 venvPath = "."

@@ -7,30 +7,11 @@
   "settings": {
     // Python Configuration
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-    "python.languageServer": "Pylance",
-    "python.analysis.typeCheckingMode": "strict",
-    "python.analysis.pythonVersion": "3.14",
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.extraPaths": ["${workspaceFolder}/DFBU"],
-    "python.analysis.include": ["DFBU"],
-    "python.analysis.exclude": [
-      "**/node_modules",
-      "**/__pycache__",
-      ".venv",
-      "build",
-      "dist",
-      "htmlcov",
-    ],
-    "python.analysis.diagnosticSeverityOverrides": {
-      "reportUnusedImport": "warning",
-      "reportUnusedVariable": "warning",
-      "reportMissingTypeStubs": "none",
-    },
-    // MyPy Type Checker (integrates with strict config in pyproject.toml)
-    "mypy-type-checker.importStrategy": "fromEnvironment",
-    "mypy-type-checker.path": ["${workspaceFolder}/.venv/bin/mypy"],
-    "mypy-type-checker.args": ["--config-file=${workspaceFolder}/pyproject.toml"],
+    // Sole LSP = basedpyright (the only installed Python language server). "None"
+    // keeps ms-python's server off. Pylance python.analysis.* and mypy-type-checker.*
+    // editor keys removed 2026-06-07 — neither extension is installed; basedpyright
+    // runs in-editor, mypy still runs in CI.
+    "python.languageServer": "None",
     // Ruff Configuration (Linter & Formatter)
     "[python]": {
       "editor.defaultFormatter": "charliermarsh.ruff",
